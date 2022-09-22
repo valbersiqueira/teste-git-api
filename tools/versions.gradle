@@ -1,29 +1,34 @@
 ext {
 
-    sdk = 32
-    min_sdk = 21
     version_code = 1
     version_name = "1.0.0"
 
-    constraint_layout = '2.1.4'
+    constraint_layout_version = '2.1.4'
     koin_version = '3.2.1'
-    core_ktx = '1.9.0'
-    appcompat = '1.5.0'
-    material = '1.6.1'
+    core_ktx_version = '1.9.0'
+    appcompat_version = '1.5.0'
+    material_version = '1.6.1'
     lifecycle_version = '2.5.0'
     arch_version = "2.1.0"
-    coroutines = '1.3.9'
+    coroutines_version = '1.3.9'
+    retrofit_version = '2.9.0'
+    okhttp_version = '4.7.2'
+    gson_version = '2.8.6'
 
 
     versionsProject = [
-            constraint_layout   : "androidx.constraintlayout:constraintlayout:$constraint_layout",
-            koin                : "androidx.constraintlayout:constraintlayout:$koin_version",
-            core_ktx            : "androidx.core:core-ktx:$core_ktx",
-            appcompat           : "androidx.appcompat:appcompat:$appcompat",
-            material            : "com.google.android.material:material:$material",
+            constraint_layout   : "androidx.constraintlayout:constraintlayout:$constraint_layout_version",
+            koin                : "io.insert-koin:koin-core:$koin_version",
+            core_ktx            : "androidx.core:core-ktx:$core_ktx_version",
+            appcompat           : "androidx.appcompat:appcompat:$appcompat_version",
+            material            : "com.google.android.material:material:$material_version",
             lifecycler_livedata : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
             lifecycler_viewmodel: "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
             viewmodel_test      : "androidx.arch.core:core-testing:$arch_version",
-            coroutines : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+            coroutines          : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version",
+            okhttp              : "com.squareup.okhttp3:okhttp:$okhttp_version",
+            retrofit            : "com.squareup.retrofit2:retrofit:$retrofit_version",
+//            gson                : "com.google.code.gson:gson:$gson_version",
+            gson_converter      : "com.squareup.retrofit2:converter-gson:$retrofit_version"
     ]
 }

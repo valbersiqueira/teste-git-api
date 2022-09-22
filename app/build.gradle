@@ -7,7 +7,7 @@ apply from: "$rootDir/tools/versions.gradle"
 
 android {
     def versions = rootProject.ext.versionsProject
-    compileSdk versions.sdk
+    compileSdkVersion 33
 
     viewBinding {
         enabled = true
@@ -15,8 +15,8 @@ android {
 
     defaultConfig {
         applicationId "com.br.valber.testegitapi"
-        minSdk versions.min_sdk
-        targetSdk versions.sdk
+        minSdk 21
+        targetSdk 33
         versionCode versions.version_code
         versionName versions.version_name
 
@@ -24,9 +24,16 @@ android {
     }
 
     buildTypes {
+        def base_url = "\"https://api.github.com/search/repositories\""
+
+        debug {
+            buildConfigField "String", "enviroment", base_url
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "enviroment", base_url
         }
     }
     compileOptions {
@@ -54,6 +61,11 @@ dependencies {
     implementation versions.lifecycler_livedata
 
     implementation versions.coroutines
+
+    implementation versions.retrofit
+    implementation versions.okhttp
+//    implementation versions.gson
+    implementation versions.gson_converter
 
 
     testImplementation 'junit:junit:4.13.2'

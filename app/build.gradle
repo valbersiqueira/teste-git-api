@@ -9,6 +9,10 @@ android {
     def versions = rootProject.ext.versionsProject
     compileSdk versions.sdk
 
+    viewBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "com.br.valber.testegitapi"
         minSdk versions.min_sdk
@@ -42,10 +46,14 @@ dependencies {
 
     implementation versions.core_ktx
     implementation versions.appcompat
+
     implementation versions.material
+
     implementation versions.viewmodel_test
     implementation versions.lifecycler_viewmodel
     implementation versions.lifecycler_livedata
+
+    implementation versions.coroutines
 
 
     testImplementation 'junit:junit:4.13.2'

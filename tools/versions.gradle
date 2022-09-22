@@ -5,6 +5,7 @@ ext {
 
     constraint_layout_version = '2.1.4'
     koin_version = '3.2.1'
+    koin_core_version = '3.2.1'
     core_ktx_version = '1.9.0'
     appcompat_version = '1.5.0'
     material_version = '1.6.1'
@@ -18,7 +19,8 @@ ext {
 
     versionsProject = [
             constraint_layout   : "androidx.constraintlayout:constraintlayout:$constraint_layout_version",
-            koin                : "io.insert-koin:koin-core:$koin_version",
+            koin                : "io.insert-koin:koin-android:$koin_version",
+            koin_core           : "io.insert-koin:koin-core:$koin_core_version",
             core_ktx            : "androidx.core:core-ktx:$core_ktx_version",
             appcompat           : "androidx.appcompat:appcompat:$appcompat_version",
             material            : "com.google.android.material:material:$material_version",
@@ -28,7 +30,7 @@ ext {
             coroutines          : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version",
             okhttp              : "com.squareup.okhttp3:okhttp:$okhttp_version",
             retrofit            : "com.squareup.retrofit2:retrofit:$retrofit_version",
-//            gson                : "com.google.code.gson:gson:$gson_version",
-            gson_converter      : "com.squareup.retrofit2:converter-gson:$retrofit_version"
+            gson_converter      : "com.squareup.retrofit2:converter-gson:$retrofit_version",
+            okhttp_logged       : "com.squareup.okhttp3:logging-interceptor:$okhttp_version",
     ]
 }

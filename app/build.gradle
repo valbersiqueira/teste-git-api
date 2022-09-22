@@ -24,7 +24,7 @@ android {
     }
 
     buildTypes {
-        def base_url = "\"https://api.github.com/search/repositories\""
+        def base_url = "\"https://api.github.com/search/\""
 
         debug {
             buildConfigField "String", "enviroment", base_url
@@ -49,7 +49,9 @@ dependencies {
     def versions = rootProject.ext.versionsProject
 
     implementation versions.constraint_layout
+
     implementation versions.koin
+    implementation versions.koin_core
 
     implementation versions.core_ktx
     implementation versions.appcompat
@@ -64,8 +66,8 @@ dependencies {
 
     implementation versions.retrofit
     implementation versions.okhttp
-//    implementation versions.gson
     implementation versions.gson_converter
+    implementation versions.okhttp_logged
 
 
     testImplementation 'junit:junit:4.13.2'

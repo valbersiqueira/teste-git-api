@@ -4,5 +4,5 @@ import com.br.valber.testegitapi.domain.entity.JavaRepo
 
 interface FetchRepoOut {
 
-    suspend fun fetchJavaRepo(page: Int): ArrayList<JavaRepo>
+    suspend fun fetchJavaRepo(page: Int): JavaRepo
 }

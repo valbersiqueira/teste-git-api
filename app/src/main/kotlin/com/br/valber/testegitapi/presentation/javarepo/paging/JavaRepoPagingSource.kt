@@ -1,4 +1,4 @@
-package com.br.valber.testegitapi.presentation.paging
+package com.br.valber.testegitapi.presentation.javarepo.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

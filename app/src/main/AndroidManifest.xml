@@ -16,7 +16,7 @@
         android:theme="@style/Theme.TesteGitApi"
         tools:targetApi="33">
 
-        <activity android:name=".presentation.MainActivity"
+        <activity android:name=".presentation.javarepo.view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.br.valber.testegitapi.presentation.view
+package com.br.valber.testegitapi.presentation.javarepo.adapter.viewholder
 
 import android.view.LayoutInflater
 import android.view.View

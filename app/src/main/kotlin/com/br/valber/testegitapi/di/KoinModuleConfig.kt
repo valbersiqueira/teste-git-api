@@ -8,8 +8,8 @@ import com.br.valber.testegitapi.data.adapter.FetchJavaRepoAdapterOut
 import com.br.valber.testegitapi.domain.input.FetchRepoIn
 import com.br.valber.testegitapi.domain.input.FetchRepoOut
 import com.br.valber.testegitapi.domain.usecases.FetchRepoUseCase
-import com.br.valber.testegitapi.presentation.paging.JavaRepoPagingSource
-import com.br.valber.testegitapi.presentation.viewmodel.JavaRepoViewModel
+import com.br.valber.testegitapi.presentation.javarepo.paging.JavaRepoPagingSource
+import com.br.valber.testegitapi.presentation.javarepo.viewmodel.JavaRepoViewModel
 import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules

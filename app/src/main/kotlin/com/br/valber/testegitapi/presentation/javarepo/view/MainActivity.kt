@@ -1,21 +1,18 @@
-package com.br.valber.testegitapi.presentation
+package com.br.valber.testegitapi.presentation.javarepo.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.br.valber.testegitapi.core.extensions.viewBinding
 import com.br.valber.testegitapi.databinding.ActivityMainBinding
 import com.br.valber.testegitapi.di.injectProjectMainModule
-import com.br.valber.testegitapi.domain.entity.ItemJava
-import com.br.valber.testegitapi.presentation.state.JavaRepoState
-import com.br.valber.testegitapi.presentation.view.JavaRepoAdapter
-import com.br.valber.testegitapi.presentation.view.LoadStateAdapter
-import com.br.valber.testegitapi.presentation.viewmodel.JavaRepoViewModel
-import kotlinx.coroutines.flow.Flow
+import com.br.valber.testegitapi.presentation.javarepo.state.JavaRepoState
+import com.br.valber.testegitapi.presentation.javarepo.adapter.JavaRepoAdapter
+import com.br.valber.testegitapi.presentation.javarepo.adapter.LoadStateAdapter
+import com.br.valber.testegitapi.presentation.javarepo.viewmodel.JavaRepoViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.map

@@ -1,10 +1,11 @@
-package com.br.valber.testegitapi.presentation.view
+package com.br.valber.testegitapi.presentation.javarepo.adapter
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.br.valber.testegitapi.domain.entity.ItemJava
+import com.br.valber.testegitapi.presentation.javarepo.adapter.viewholder.JavaRepoViewHolder
 
 class JavaRepoAdapter : PagingDataAdapter<ItemJava, RecyclerView.ViewHolder>(ITEM_JAVA_COMPARATOR){
 

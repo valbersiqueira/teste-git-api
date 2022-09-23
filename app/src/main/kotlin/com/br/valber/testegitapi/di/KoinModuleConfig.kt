@@ -9,7 +9,6 @@ import com.br.valber.testegitapi.domain.input.FetchRepoIn
 import com.br.valber.testegitapi.domain.input.FetchRepoOut
 import com.br.valber.testegitapi.domain.usecases.FetchRepoUseCase
 import com.br.valber.testegitapi.presentation.viewmodel.JavaRepoViewModel
-import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.startKoin
@@ -18,7 +17,7 @@ import org.koin.dsl.module
 private val projectMainModule = module {
     factory<RequestApi> { RequestApiImpl() }
     factory<RemoteBuilder> { RetrofitBuilderImpl() }
-    factory<FetchRepoOut> { FetchJavaRepoAdapterOut(Dispatchers.IO, get(), get()) }
+    factory<FetchRepoOut> { FetchJavaRepoAdapterOut(get()) }
     factory <FetchRepoIn>{ FetchRepoUseCase(get()) }
     viewModel { JavaRepoViewModel(get()) }
 }

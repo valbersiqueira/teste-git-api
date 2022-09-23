@@ -1,30 +1,42 @@
 package com.br.valber.testegitapi.presentation.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.br.valber.testegitapi.domain.entity.ItemJava
 import com.br.valber.testegitapi.domain.input.FetchRepoIn
 import com.br.valber.testegitapi.presentation.state.JavaRepoState
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 internal class JavaRepoViewModel(
     private val fetchRepoIn: FetchRepoIn
 ) : ViewModel() {
 
-    private val _state by lazy { MutableLiveData<JavaRepoState>() }
-    val state: LiveData<JavaRepoState>
-        get() = _state
+    val pagingDataFlow: Flow<PagingData<ItemJava>>
+    val accept: (JavaRepoState) -> Unit
 
+    init {
+        val actionStateFlow = MutableSharedFlow<JavaRepoState>()
 
-    fun fetchJavaRepo() {
-        viewModelScope.launch {
-            try {
-                val javaRepo = fetchRepoIn.fetchJavaRepo(1)
-                _state.postValue(JavaRepoState.ShowJavaRepo(javaRepo))
-            } catch (ex: Throwable) {
-                _state.postValue(JavaRepoState.ShowError(ex.message ?: ""))
-            }
+        val queryScroll = actionStateFlow
+            .filterIsInstance<JavaRepoState.Scroll>()
+            .distinctUntilChanged()
+            .shareIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 5000),
+                replay = 1
+            )
+            .onStart { emit(JavaRepoState.Scroll) }
+
+        pagingDataFlow = queryScroll
+            .flatMapLatest { fetchRepoIn.fetchJavaRepo() }
+            .cachedIn(viewModelScope)
+
+        accept = { action ->
+            viewModelScope.launch { actionStateFlow.emit(action) }
         }
     }
+
 }

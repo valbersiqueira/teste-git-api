@@ -15,6 +15,7 @@ ext {
     retrofit_version = '2.9.0'
     okhttp_version = '4.7.2'
     gson_version = '2.8.6'
+    paging_version = '3.1.0'
 
 
     versionsProject = [
@@ -32,5 +33,6 @@ ext {
             retrofit            : "com.squareup.retrofit2:retrofit:$retrofit_version",
             gson_converter      : "com.squareup.retrofit2:converter-gson:$retrofit_version",
             okhttp_logged       : "com.squareup.okhttp3:logging-interceptor:$okhttp_version",
+            paging              : "androidx.paging:paging-runtime-ktx:$paging_version"
     ]
 }

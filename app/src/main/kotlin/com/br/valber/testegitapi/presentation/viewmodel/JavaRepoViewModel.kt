@@ -10,6 +10,7 @@ import com.br.valber.testegitapi.presentation.state.JavaRepoState
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
+@Suppress("EXPERIMENTAL_IS_NOT_ENABLED")
 internal class JavaRepoViewModel(
     private val fetchRepoIn: FetchRepoIn
 ) : ViewModel() {
@@ -30,13 +31,17 @@ internal class JavaRepoViewModel(
             )
             .onStart { emit(JavaRepoState.Scroll) }
 
+        @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
         pagingDataFlow = queryScroll
             .flatMapLatest { fetchRepoIn.fetchJavaRepo() }
             .cachedIn(viewModelScope)
 
         accept = { action ->
-            viewModelScope.launch { actionStateFlow.emit(action) }
+            viewModelScope.launch {
+                actionStateFlow.emit(action)
+            }
         }
+
     }
 
 }

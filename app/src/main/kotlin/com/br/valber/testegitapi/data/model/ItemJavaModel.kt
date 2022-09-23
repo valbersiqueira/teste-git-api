@@ -13,7 +13,7 @@ data class ItemJavaModel(
     val fullName: String,
 
     @SerializedName("description")
-    val description: String,
+    val description: String?,
 
     @SerializedName("stargazers_count")
     val stargazersCount: Int,

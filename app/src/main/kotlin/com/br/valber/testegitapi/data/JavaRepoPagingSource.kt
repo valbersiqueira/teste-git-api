@@ -1,5 +1,6 @@
 package com.br.valber.testegitapi.data
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.br.valber.testegitapi.data.model.ItemJavaModel
@@ -30,7 +31,7 @@ class JavaRepoPagingSource(
 
         return try {
             val response = service.fetchJavaRepo(position, params.loadSize)
-            val items = response.items
+            val items: ArrayList<ItemJavaModel> = response.items
             val nextKey = if (items.isEmpty()) {
                 null
             } else {
@@ -40,7 +41,7 @@ class JavaRepoPagingSource(
             LoadResult.Page(
                 data = items.toItemJava(),
                 prevKey = if (position == STARTING_PAGE) null else position - 1,
-                nextKey= nextKey
+                nextKey = nextKey
             )
         } catch (ex: IOException) {
             LoadResult.Error(ex)
@@ -50,14 +51,14 @@ class JavaRepoPagingSource(
     }
 
     private fun ArrayList<ItemJavaModel>.toItemJava() = map {
-        ItemJava(
-            name = it.name,
-            description = it.description,
-            fullName = it.fullName,
-            avatar = it.owner.avatarUrl,
-            forksCount = it.forks,
-            startCount = it.stargazersCount
-        )
+            ItemJava(
+                name = it.name,
+                description = it.description,
+                fullName = it.fullName,
+                avatar = it.owner.avatarUrl,
+                forksCount = it.forks,
+                startCount = it.stargazersCount
+            )
     }
 
 }

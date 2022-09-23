@@ -1,22 +1,19 @@
-package com.br.valber.testegitapi.data
+package com.br.valber.testegitapi.presentation.paging
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.br.valber.testegitapi.data.model.ItemJavaModel
-import com.br.valber.testegitapi.data.repositories.JavaRepoService
 import com.br.valber.testegitapi.domain.entity.ItemJava
+import com.br.valber.testegitapi.domain.input.FetchRepoIn
 import retrofit2.HttpException
 import java.io.IOException
 
-const val NETWORK_PAGE_SIZE = 30
-
 class JavaRepoPagingSource(
-    private val service: JavaRepoService
+    private val fetchRepoOut: FetchRepoIn
 ) : PagingSource<Int, ItemJava>() {
 
     companion object {
         private const val STARTING_PAGE = 1
+        const val NETWORK_PAGE_SIZE = 30
     }
 
     override fun getRefreshKey(state: PagingState<Int, ItemJava>): Int? {
@@ -30,8 +27,8 @@ class JavaRepoPagingSource(
         val position = params.key ?: STARTING_PAGE
 
         return try {
-            val response = service.fetchJavaRepo(position, params.loadSize)
-            val items: ArrayList<ItemJavaModel> = response.items
+            val items = fetchRepoOut.fetchJavaRepo(position, params.loadSize)
+
             val nextKey = if (items.isEmpty()) {
                 null
             } else {
@@ -39,7 +36,7 @@ class JavaRepoPagingSource(
             }
 
             LoadResult.Page(
-                data = items.toItemJava(),
+                data = items,
                 prevKey = if (position == STARTING_PAGE) null else position - 1,
                 nextKey = nextKey
             )
@@ -48,17 +45,6 @@ class JavaRepoPagingSource(
         } catch (ex: HttpException) {
             LoadResult.Error(ex)
         }
-    }
-
-    private fun ArrayList<ItemJavaModel>.toItemJava() = map {
-            ItemJava(
-                name = it.name,
-                description = it.description,
-                fullName = it.fullName,
-                avatar = it.owner.avatarUrl,
-                forksCount = it.forks,
-                startCount = it.stargazersCount
-            )
     }
 
 }

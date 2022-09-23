@@ -7,5 +7,5 @@ data class JavaRepoModel(
     val totalCount: Int,
 
     @SerializedName("items")
-    val items: ArrayList<ItemJavaModel>
+    val items: List<ItemJavaModel>
 )

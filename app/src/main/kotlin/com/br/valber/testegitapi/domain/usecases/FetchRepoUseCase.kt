@@ -7,7 +7,9 @@ internal class FetchRepoUseCase(
     private val fetchRepoOut: FetchRepoOut
 ) : FetchRepoIn {
 
-    override suspend fun fetchJavaRepo() =
-        fetchRepoOut.fetchJavaRepo()
+    override suspend fun fetchJavaRepo(
+        page: Int,
+        itemsPerPage: Int
+    ) = fetchRepoOut.fetchJavaRepo(page, itemsPerPage)
 
 }

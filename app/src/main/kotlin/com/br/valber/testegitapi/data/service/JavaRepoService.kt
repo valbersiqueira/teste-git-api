@@ -1,4 +1,4 @@
-package com.br.valber.testegitapi.data.repositories
+package com.br.valber.testegitapi.data.service
 
 import com.br.valber.testegitapi.data.model.JavaRepoModel
 import retrofit2.http.GET

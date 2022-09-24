@@ -2,16 +2,17 @@ package com.br.valber.testegitapi.presentation.javarepo.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.br.valber.testegitapi.core.extensions.viewBinding
-import com.br.valber.testegitapi.databinding.ActivityMainBinding
+import com.br.valber.testegitapi.databinding.ActivityJavaRepoBinding
 import com.br.valber.testegitapi.di.injectProjectMainModule
-import com.br.valber.testegitapi.presentation.javarepo.state.JavaRepoState
 import com.br.valber.testegitapi.presentation.javarepo.adapter.JavaRepoAdapter
 import com.br.valber.testegitapi.presentation.javarepo.adapter.LoadStateAdapter
+import com.br.valber.testegitapi.presentation.javarepo.state.JavaRepoState
 import com.br.valber.testegitapi.presentation.javarepo.viewmodel.JavaRepoViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
@@ -19,7 +20,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class JavaRepoActivity : AppCompatActivity() {
 
     init {
         injectProjectMainModule()
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel: JavaRepoViewModel by viewModel()
 
-    private val binding: ActivityMainBinding by viewBinding(ActivityMainBinding::inflate)
+    private val binding: ActivityJavaRepoBinding by viewBinding(ActivityJavaRepoBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         binding.bindState(viewModel.accept)
     }
 
-    private fun ActivityMainBinding.bindState(
+    private fun ActivityJavaRepoBinding.bindState(
         uiAction: (JavaRepoState) -> Unit
     ) {
         val adapter = JavaRepoAdapter()
@@ -49,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         bindList(adapter, uiAction)
     }
 
-    private fun ActivityMainBinding.bindList(
+    private fun ActivityJavaRepoBinding.bindList(
         adapter: JavaRepoAdapter,
         onScrollChanged: (JavaRepoState.Scroll) -> Unit
     ) {
@@ -67,6 +68,16 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             notLoading.collect { shouldScroll ->
                 if (shouldScroll) recyclerRepo.scrollToPosition(0)
+            }
+        }
+
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collect{
+                progressBar.isVisible = it.refresh is LoadState.Loading && adapter.itemCount == 0
+                val isListEmpty = it.refresh is LoadState.NotLoading && adapter.itemCount == 0
+                emptyList.isVisible = isListEmpty
+                recyclerRepo.isVisible = !isListEmpty
+                buttonRetry.isVisible = it.source.refresh is LoadState.Error
             }
         }
 

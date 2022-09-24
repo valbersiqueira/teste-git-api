@@ -4,10 +4,10 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.br.valber.testegitapi.domain.entity.ItemJava
+import com.br.valber.testegitapi.domain.entity.JavaRepo
 import com.br.valber.testegitapi.presentation.javarepo.adapter.viewholder.JavaRepoViewHolder
 
-class JavaRepoAdapter : PagingDataAdapter<ItemJava, RecyclerView.ViewHolder>(ITEM_JAVA_COMPARATOR){
+class JavaRepoAdapter : PagingDataAdapter<JavaRepo, RecyclerView.ViewHolder>(ITEM_JAVA_COMPARATOR){
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val itemJava = getItem(position)
@@ -19,12 +19,12 @@ class JavaRepoAdapter : PagingDataAdapter<ItemJava, RecyclerView.ViewHolder>(ITE
     }
 
     companion object {
-        private val ITEM_JAVA_COMPARATOR = object : DiffUtil.ItemCallback<ItemJava>() {
-            override fun areItemsTheSame(oldItem: ItemJava, newItem: ItemJava): Boolean {
+        private val ITEM_JAVA_COMPARATOR = object : DiffUtil.ItemCallback<JavaRepo>() {
+            override fun areItemsTheSame(oldItem: JavaRepo, newItem: JavaRepo): Boolean {
                 return oldItem.fullName == newItem.fullName
             }
 
-            override fun areContentsTheSame(oldItem: ItemJava, newItem: ItemJava): Boolean =
+            override fun areContentsTheSame(oldItem: JavaRepo, newItem: JavaRepo): Boolean =
                 oldItem == newItem
 
         }

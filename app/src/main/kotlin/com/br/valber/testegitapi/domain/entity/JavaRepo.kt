@@ -1,6 +1,11 @@
 package com.br.valber.testegitapi.domain.entity
 
 data class JavaRepo(
-    val totalPage: Int,
-    val items: List<ItemJava>
+    val name: String,
+    val description: String?,
+    val fullName: String,
+    val avatar: String,
+    val startCount: String,
+    val forksCount: String,
+    val pullsUrl: String
 )

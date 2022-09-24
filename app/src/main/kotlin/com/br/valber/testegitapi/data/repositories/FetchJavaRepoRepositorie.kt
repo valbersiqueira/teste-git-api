@@ -4,7 +4,7 @@ import com.br.valber.testegitapi.framework.RemoteBuilder
 import com.br.valber.testegitapi.framework.RequestApi
 import com.br.valber.testegitapi.data.model.ItemJavaModel
 import com.br.valber.testegitapi.data.service.JavaRepoService
-import com.br.valber.testegitapi.domain.entity.ItemJava
+import com.br.valber.testegitapi.domain.entity.JavaRepo
 import com.br.valber.testegitapi.domain.input.FetchRepoOut
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +20,7 @@ internal class FetchJavaRepoRepositorie(
     override suspend fun fetchJavaRepo(
         page: Int,
         itemsPerPage: Int
-    ): List<ItemJava> {
+    ): List<JavaRepo> {
         return requestApi.safeRequestApi(dispatcher) {
             val response = service.fetchJavaRepo(page, itemsPerPage)
             response.items.toItemJava()
@@ -28,7 +28,7 @@ internal class FetchJavaRepoRepositorie(
     }
 
     private fun List<ItemJavaModel>.toItemJava() = map {
-        ItemJava(
+        JavaRepo(
             name = it.name,
             description = it.description,
             fullName = it.fullName,

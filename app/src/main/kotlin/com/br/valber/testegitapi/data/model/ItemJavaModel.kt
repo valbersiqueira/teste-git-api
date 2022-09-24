@@ -15,6 +15,9 @@ data class ItemJavaModel(
     @SerializedName("description")
     val description: String?,
 
+    @SerializedName("pulls_url")
+    val pullsUrl: String?,
+
     @SerializedName("stargazers_count")
     val stargazersCount: Int? = 0,
 

@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.br.valber.testegitapi.R
-import com.br.valber.testegitapi.domain.entity.ItemJava
+import com.br.valber.testegitapi.domain.entity.JavaRepo
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Transformation
 
@@ -23,22 +23,22 @@ class JavaRepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val userName: TextView = view.findViewById(R.id.textViewUserName)
     private val imageViewUser: ImageView = view.findViewById(R.id.imageViewUser)
 
-    fun bind(itemJava: ItemJava?) {
+    fun bind(itemJava: JavaRepo?) {
         showItems(itemJava)
     }
 
-    private fun showItems(itemJava: ItemJava?) {
-        repoName.text = itemJava?.fullName
+    private fun showItems(javaRepo: JavaRepo?) {
+        repoName.text = javaRepo?.fullName
         repoDescription.apply {
-            isVisible = itemJava?.description != null
-            text = itemJava?.description
+            isVisible = javaRepo?.description != null
+            text = javaRepo?.description
         }
-        countStar.text = itemJava?.startCount
-        countBranch.text = itemJava?.forksCount
-        userName.text = itemJava?.name
+        countStar.text = javaRepo?.startCount
+        countBranch.text = javaRepo?.forksCount
+        userName.text = javaRepo?.name
 
         Picasso.get()
-            .load(itemJava?.avatar)
+            .load(javaRepo?.avatar)
             .placeholder(R.drawable.ic_baseline_supervised_user_circle_24)
             .transform(CircleTransform())
             .into(imageViewUser)

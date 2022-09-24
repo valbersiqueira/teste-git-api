@@ -6,7 +6,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.br.valber.testegitapi.domain.entity.ItemJava
+import com.br.valber.testegitapi.domain.entity.JavaRepo
 import com.br.valber.testegitapi.domain.input.FetchRepoIn
 import com.br.valber.testegitapi.presentation.javarepo.paging.JavaRepoPagingSource
 import com.br.valber.testegitapi.presentation.javarepo.paging.JavaRepoPagingSource.Companion.NETWORK_PAGE_SIZE
@@ -19,7 +19,7 @@ internal class JavaRepoViewModel(
     private val fetchRepoIn: FetchRepoIn
 ) : ViewModel() {
 
-    val pagingDataFlow: Flow<PagingData<ItemJava>>
+    val pagingDataFlow: Flow<PagingData<JavaRepo>>
     val accept: (JavaRepoState) -> Unit
 
     init {

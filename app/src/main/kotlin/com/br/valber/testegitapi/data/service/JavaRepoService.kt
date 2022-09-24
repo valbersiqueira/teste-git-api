@@ -8,16 +8,18 @@ import retrofit2.http.Query
 
 interface JavaRepoService {
 
-    @GET("repositories?q=language:Java&sort=stars")
+    @GET("search/repositories?q=language:Java&sort=stars")
     suspend fun fetchJavaRepo(
         @Query("page") page: Int,
         @Query("per_page") itemsPerPage: Int
     ): JavaRepoModel
 
-    @GET("repos/{create}/{repo}/pulls")
+    @GET("repos/{owner}/{repo}/pulls")
     suspend fun fetchPullsRequest(
-        @Path("create") create: String,
-        @Path("repo") repo: String
+        @Path("owner") owner: String,
+        @Path("repo") repo: String,
+        @Query("page") page: Int,
+        @Query("per_page") itemsPerPage: Int
     ): List<PullRequestModel>
 
 }

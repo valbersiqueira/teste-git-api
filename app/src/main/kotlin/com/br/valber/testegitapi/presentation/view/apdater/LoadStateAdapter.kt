@@ -1,9 +1,9 @@
-package com.br.valber.testegitapi.presentation.javarepo.adapter
+package com.br.valber.testegitapi.presentation.view.apdater
 
 import android.view.ViewGroup
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
-import com.br.valber.testegitapi.presentation.javarepo.adapter.viewholder.LoadStateViewHolder
+import com.br.valber.testegitapi.presentation.view.apdater.viewholder.LoadStateViewHolder
 
 internal class LoadStateAdapter(
     private val retry: () -> Unit

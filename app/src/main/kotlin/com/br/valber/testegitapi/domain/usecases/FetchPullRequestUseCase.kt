@@ -7,7 +7,12 @@ internal class FetchPullRequestUseCase(
     private val fetchPullRequestOut: FetchPullRequestOut
 ) : FetchPullRequestIn {
 
-    override suspend fun fetchPulls(create: String, repo: String) =
-        fetchPullRequestOut.fetchPulls(create, repo)
+    override suspend fun fetchPulls(
+        page: Int,
+        itemsPerPage: Int,
+        owner: String,
+        repo: String
+    ) =
+        fetchPullRequestOut.fetchPulls(page, itemsPerPage, owner, repo)
 
 }

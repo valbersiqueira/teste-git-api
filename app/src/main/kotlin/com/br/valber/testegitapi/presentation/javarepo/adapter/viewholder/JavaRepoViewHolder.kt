@@ -10,11 +10,12 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.br.valber.testegitapi.R
 import com.br.valber.testegitapi.domain.entity.JavaRepo
+import com.br.valber.testegitapi.presentation.pullrequest.view.PullRequestActivity
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Transformation
 
 
-class JavaRepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class JavaRepoViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
     private val repoName: TextView = view.findViewById(R.id.textViewRepoName)
     private val repoDescription: TextView = view.findViewById(R.id.textViewRepoDescription)
@@ -25,6 +26,17 @@ class JavaRepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(itemJava: JavaRepo?) {
         showItems(itemJava)
+
+        view.setOnClickListener {
+            val context = view.context
+            context.startActivity(
+                PullRequestActivity.startActivity(
+                    context,
+                    itemJava?.login,
+                    itemJava?.name
+                )
+            )
+        }
     }
 
     private fun showItems(javaRepo: JavaRepo?) {

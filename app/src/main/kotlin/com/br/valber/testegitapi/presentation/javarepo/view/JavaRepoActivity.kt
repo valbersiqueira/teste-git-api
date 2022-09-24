@@ -11,7 +11,7 @@ import com.br.valber.testegitapi.framework.extensions.viewBinding
 import com.br.valber.testegitapi.databinding.ActivityJavaRepoBinding
 import com.br.valber.testegitapi.di.injectProjectMainModule
 import com.br.valber.testegitapi.presentation.javarepo.adapter.JavaRepoAdapter
-import com.br.valber.testegitapi.presentation.javarepo.adapter.LoadStateAdapter
+import com.br.valber.testegitapi.presentation.view.apdater.LoadStateAdapter
 import com.br.valber.testegitapi.presentation.javarepo.state.UIJavaRepoState
 import com.br.valber.testegitapi.presentation.javarepo.viewmodel.JavaRepoViewModel
 import kotlinx.coroutines.flow.collectLatest

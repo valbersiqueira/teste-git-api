@@ -7,5 +7,6 @@ data class JavaRepo(
     val avatar: String,
     val startCount: String,
     val forksCount: String,
-    val pullsUrl: String
+    val pullsUrl: String,
+    val login: String
 )

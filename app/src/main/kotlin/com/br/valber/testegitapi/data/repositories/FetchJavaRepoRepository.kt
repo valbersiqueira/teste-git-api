@@ -35,7 +35,8 @@ internal class FetchJavaRepoRepository(
             avatar = it.owner.avatarUrl,
             forksCount = it.forks.toString(),
             startCount = it.stargazersCount.toString(),
-            pullsUrl = it.pullsUrl ?: ""
+            pullsUrl = it.pullsUrl ?: "",
+            login = it.owner.login
         )
     }
 

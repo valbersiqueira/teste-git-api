@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imageViewStar"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/dimen_20dp"
+        android:layout_height="@dimen/dimen_20dp"
         android:layout_marginStart="@dimen/dimen_16dp"
         android:src="@drawable/ic_star"
         app:layout_constraintStart_toStartOf="@id/guideline"
@@ -17,16 +17,16 @@
 
     <ImageView
         android:id="@+id/imageViewGitBranch"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/dimen_20dp"
+        android:layout_height="@dimen/dimen_20dp"
         android:src="@drawable/ic_git_branch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewRepoDescription" />
 
     <ImageView
         android:id="@+id/imageViewUser"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="@dimen/dimen_60dp"
+        android:layout_height="@dimen/dimen_60dp"
         tools:srcCompat="@drawable/ic_baseline_supervised_user_circle_24"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:background="@drawable/shape_image_user"
@@ -35,7 +35,7 @@
 
     <TextView
         android:id="@+id/textViewCountStar"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,10 +48,9 @@
 
     <TextView
         android:id="@+id/textViewCountBranch"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_16dp"
-        android:text="20"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/imageViewGitBranch"
         android:textColor="@color/yellow"
@@ -76,10 +75,10 @@
 
     <TextView
         android:id="@+id/textViewRepoName"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/blue_crayola"
-        android:textSize="@dimen/dimen_24sp"
+        android:textSize="@dimen/dimen_18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

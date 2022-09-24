@@ -2,10 +2,14 @@
 <resources>
     <dimen name="dimen_24sp">24sp</dimen>
     <dimen name="dimen_12sp">12sp</dimen>
+    <dimen name="dimen_18sp">18sp</dimen>
     <dimen name="dimen_26sp">26sp</dimen>
 
     <dimen name="dimen_12dp">12dp</dimen>
     <dimen name="dimen_16dp">16dp</dimen>
+    <dimen name="dimen_20dp">20dp</dimen>
+    <dimen name="dimen_60dp">60dp</dimen>
+    <dimen name="dimen_0dp">0dp</dimen>
 
 
 

@@ -4,7 +4,7 @@ import com.br.valber.testegitapi.core.RemoteBuilder
 import com.br.valber.testegitapi.core.RequestApi
 import com.br.valber.testegitapi.core.RequestApiImpl
 import com.br.valber.testegitapi.core.RetrofitBuilderImpl
-import com.br.valber.testegitapi.data.adapter.FetchJavaRepoAdapterOut
+import com.br.valber.testegitapi.data.adapterout.FetchJavaRepoAdapterOut
 import com.br.valber.testegitapi.domain.input.FetchRepoIn
 import com.br.valber.testegitapi.domain.input.FetchRepoOut
 import com.br.valber.testegitapi.domain.usecases.FetchRepoUseCase

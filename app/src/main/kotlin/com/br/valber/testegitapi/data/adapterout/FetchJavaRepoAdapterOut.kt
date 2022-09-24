@@ -1,4 +1,4 @@
-package com.br.valber.testegitapi.data.adapter
+package com.br.valber.testegitapi.data.adapterout
 
 import com.br.valber.testegitapi.core.RemoteBuilder
 import com.br.valber.testegitapi.core.RequestApi
@@ -33,8 +33,8 @@ internal class FetchJavaRepoAdapterOut(
             description = it.description,
             fullName = it.fullName,
             avatar = it.owner.avatarUrl,
-            forksCount = it.forks,
-            startCount = it.stargazersCount
+            forksCount = it.forks.toString(),
+            startCount = it.stargazersCount.toString()
         )
     }
 

@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/FLUTTER_PROJECT/Testegitapi/app/src/main/res/drawable/ic_git_branch.xml" value="0.165" />
+        <entry key="..\:/FLUTTER_PROJECT/Testegitapi/app/src/main/res/drawable/ic_star.xml" value="0.165" />
         <entry key="..\:/FLUTTER_PROJECT/Testegitapi/app/src/main/res/layout/activity_main.xml" value="0.3338068181818182" />
         <entry key="..\:/FLUTTER_PROJECT/Testegitapi/app/src/main/res/layout/view_holder_java_repo.xml" value="0.365625" />
         <entry key="..\:/FLUTTER_PROJECT/Testegitapi/app/src/main/res/layout/view_holder_load_state_footer.xml" value="0.36666666666666664" />

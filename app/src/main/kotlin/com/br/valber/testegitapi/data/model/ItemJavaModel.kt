@@ -16,10 +16,10 @@ data class ItemJavaModel(
     val description: String?,
 
     @SerializedName("stargazers_count")
-    val stargazersCount: Int,
+    val stargazersCount: Int? = 0,
 
     @SerializedName("forks")
-    val forks: Int,
+    val forks: Int? = 0,
 
     @SerializedName("owner")
     val owner: OwnerModel,

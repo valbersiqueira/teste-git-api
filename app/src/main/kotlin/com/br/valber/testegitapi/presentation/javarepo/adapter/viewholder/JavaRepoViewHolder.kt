@@ -13,6 +13,8 @@ class JavaRepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val repoName: TextView = view.findViewById(R.id.textViewRepoName)
     private val repoDescription: TextView = view.findViewById(R.id.textViewRepoDescription)
+    private val countBranch: TextView = view.findViewById(R.id.textViewCountBranch)
+    private val countStar: TextView = view.findViewById(R.id.textViewCountStar)
 
     fun bind(itemJava: ItemJava?) {
         showItems(itemJava)
@@ -24,6 +26,8 @@ class JavaRepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             isVisible = itemJava?.description != null
             text = itemJava?.description
         }
+        countStar.text = itemJava?.startCount
+        countBranch.text = itemJava?.forksCount
     }
 
     companion object {

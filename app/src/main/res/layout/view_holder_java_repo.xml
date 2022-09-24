@@ -1,21 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="12dp"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/imageViewStar"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:src="@drawable/ic_star"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/textViewRepoDescription" />
+
+    <ImageView
+        android:id="@+id/imageViewGitBranch"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_git_branch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewRepoDescription" />
 
     <TextView
-        android:id="@+id/textViewRepoName"
+        android:id="@+id/textViewCountStar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/blue_crayola"
-        android:textSize="@dimen/dimen_24sp"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageViewStar"
+        android:textColor="@color/yellow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="android-architecture"/>
+        app:layout_constraintTop_toBottomOf="@id/textViewRepoDescription"
+        tools:text="20" />
+
+    <TextView
+        android:id="@+id/textViewCountBranch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:text="20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageViewGitBranch"
+        android:textColor="@color/yellow"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/textViewRepoDescription"
+        tools:text="20" />
 
     <TextView
         android:id="@+id/textViewRepoDescription"
@@ -29,5 +60,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewRepoName"
         tools:ignore="UnusedAttribute"
-        tools:text="A collection of samples to discuss and showcase different architectural tools and patterns for Android apps."/>
+        tools:text="A collection of samples to discuss and showcase different architectural tools and patterns for Android apps." />
+
+    <TextView
+        android:id="@+id/textViewRepoName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blue_crayola"
+        android:textSize="@dimen/dimen_24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="android-architecture" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

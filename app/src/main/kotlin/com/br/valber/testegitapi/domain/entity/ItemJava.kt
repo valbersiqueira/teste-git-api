@@ -5,6 +5,6 @@ data class ItemJava(
     val description: String?,
     val fullName: String,
     val avatar: String,
-    val startCount: Int,
-    val forksCount: Int
+    val startCount: String,
+    val forksCount: String
 )

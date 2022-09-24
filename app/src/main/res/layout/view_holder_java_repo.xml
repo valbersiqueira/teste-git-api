@@ -12,6 +12,7 @@
         android:layout_height="@dimen/dimen_20dp"
         android:layout_marginStart="@dimen/dimen_16dp"
         android:src="@drawable/ic_star"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/textViewRepoDescription" />
 
@@ -20,6 +21,7 @@
         android:layout_width="@dimen/dimen_20dp"
         android:layout_height="@dimen/dimen_20dp"
         android:src="@drawable/ic_git_branch"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewRepoDescription" />
 
@@ -27,22 +29,35 @@
         android:id="@+id/imageViewUser"
         android:layout_width="@dimen/dimen_60dp"
         android:layout_height="@dimen/dimen_60dp"
-        tools:srcCompat="@drawable/ic_baseline_supervised_user_circle_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:background="@drawable/shape_image_user"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewRepoName" />
+        app:layout_constraintTop_toBottomOf="@id/textViewRepoName"
+        tools:background="@drawable/shape_image_user"
+        tools:srcCompat="@drawable/ic_baseline_supervised_user_circle_24" />
+
+    <TextView
+        android:id="@+id/textViewUserName"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:gravity="center"
+        android:textColor="@color/blue_crayola"
+        android:textSize="@dimen/dimen_12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidelineEnd"
+        app:layout_constraintTop_toBottomOf="@id/imageViewUser"
+        tools:text="User name" />
 
     <TextView
         android:id="@+id/textViewCountStar"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imageViewStar"
-        android:textColor="@color/yellow"
         android:layout_marginEnd="@dimen/dimen_16dp"
-        app:layout_constraintEnd_toStartOf="@id/imageViewUser"
+        android:textColor="@color/yellow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+        app:layout_constraintStart_toEndOf="@id/imageViewStar"
         app:layout_constraintTop_toBottomOf="@id/textViewRepoDescription"
         tools:text="20" />
 
@@ -51,10 +66,10 @@
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imageViewGitBranch"
         android:textColor="@color/yellow"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline"
+        app:layout_constraintStart_toEndOf="@id/imageViewGitBranch"
         app:layout_constraintTop_toBottomOf="@id/textViewRepoDescription"
         tools:text="20" />
 
@@ -62,11 +77,11 @@
         android:id="@+id/textViewRepoDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_16dp"
         android:maxLines="10"
         android:paddingVertical="@dimen/dimen_12dp"
         android:textColor="?android:textColorPrimary"
         android:textSize="@dimen/dimen_12sp"
-        android:layout_marginEnd="@dimen/dimen_16dp"
         app:layout_constraintEnd_toStartOf="@id/imageViewUser"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewRepoName"
@@ -89,5 +104,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.25"/>
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,6 +20,7 @@ class JavaRepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val repoDescription: TextView = view.findViewById(R.id.textViewRepoDescription)
     private val countBranch: TextView = view.findViewById(R.id.textViewCountBranch)
     private val countStar: TextView = view.findViewById(R.id.textViewCountStar)
+    private val userName: TextView = view.findViewById(R.id.textViewUserName)
     private val imageViewUser: ImageView = view.findViewById(R.id.imageViewUser)
 
     fun bind(itemJava: ItemJava?) {
@@ -34,6 +35,7 @@ class JavaRepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         }
         countStar.text = itemJava?.startCount
         countBranch.text = itemJava?.forksCount
+        userName.text = itemJava?.name
 
         Picasso.get()
             .load(itemJava?.avatar)

@@ -1,4 +1,4 @@
-package com.br.valber.testegitapi.core
+package com.br.valber.testegitapi.framework
 
 import com.br.valber.testegitapi.BuildConfig
 import okhttp3.OkHttpClient

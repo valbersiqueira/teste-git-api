@@ -1,7 +1,7 @@
 package com.br.valber.testegitapi.data.repositories
 
-import com.br.valber.testegitapi.core.RemoteBuilder
-import com.br.valber.testegitapi.core.RequestApi
+import com.br.valber.testegitapi.framework.RemoteBuilder
+import com.br.valber.testegitapi.framework.RequestApi
 import com.br.valber.testegitapi.data.model.ItemJavaModel
 import com.br.valber.testegitapi.data.service.JavaRepoService
 import com.br.valber.testegitapi.domain.entity.ItemJava

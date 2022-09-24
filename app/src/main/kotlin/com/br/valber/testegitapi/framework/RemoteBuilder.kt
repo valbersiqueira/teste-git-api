@@ -1,4 +1,4 @@
-package com.br.valber.testegitapi.core
+package com.br.valber.testegitapi.framework
 
 import retrofit2.Retrofit
 

@@ -1,9 +1,9 @@
 package com.br.valber.testegitapi.di
 
-import com.br.valber.testegitapi.core.RemoteBuilder
-import com.br.valber.testegitapi.core.RequestApi
-import com.br.valber.testegitapi.core.RequestApiImpl
-import com.br.valber.testegitapi.core.RetrofitBuilderImpl
+import com.br.valber.testegitapi.framework.RemoteBuilder
+import com.br.valber.testegitapi.framework.RequestApi
+import com.br.valber.testegitapi.framework.RequestApiImpl
+import com.br.valber.testegitapi.framework.RetrofitBuilderImpl
 import com.br.valber.testegitapi.data.repositories.FetchJavaRepoRepositorie
 import com.br.valber.testegitapi.domain.input.FetchRepoIn
 import com.br.valber.testegitapi.domain.input.FetchRepoOut

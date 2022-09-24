@@ -1,4 +1,4 @@
-package com.br.valber.testegitapi.core
+package com.br.valber.testegitapi.framework
 
 import kotlinx.coroutines.CoroutineDispatcher
 

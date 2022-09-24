@@ -7,7 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import com.br.valber.testegitapi.core.extensions.viewBinding
+import com.br.valber.testegitapi.framework.extensions.viewBinding
 import com.br.valber.testegitapi.databinding.ActivityJavaRepoBinding
 import com.br.valber.testegitapi.di.injectProjectMainModule
 import com.br.valber.testegitapi.presentation.javarepo.adapter.JavaRepoAdapter

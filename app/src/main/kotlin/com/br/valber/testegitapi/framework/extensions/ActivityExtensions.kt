@@ -1,4 +1,4 @@
-package com.br.valber.testegitapi.core.extensions
+package com.br.valber.testegitapi.framework.extensions
 
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity

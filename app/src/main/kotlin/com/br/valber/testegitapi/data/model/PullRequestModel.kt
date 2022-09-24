@@ -22,5 +22,5 @@ data class HeadModel(
     val user: OwnerModel,
 
     @SerializedName("repo")
-    val repo: ItemJavaModel
+    val repo: ItemJavaModel?
 )

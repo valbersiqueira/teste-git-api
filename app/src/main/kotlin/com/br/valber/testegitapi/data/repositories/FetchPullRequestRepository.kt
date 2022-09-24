@@ -33,9 +33,9 @@ class FetchPullRequestRepository(
 
     private fun List<PullRequestModel>.toPullRequest() = map {
         PullRequest(
-            name = it.head.repo.name,
-            description = it.head.repo.description,
-            fullName = it.head.repo.fullName,
+            name = it.head.repo?.name ?: "",
+            description = it.head.repo?.description,
+            fullName = it.head.repo?.fullName ?: "",
             avatar = it.head.user.avatarUrl
         )
     }

@@ -7,7 +7,7 @@ data class ItemJavaModel(
     val id: Long,
 
     @SerializedName("name")
-    val name: String,
+    val name: String?,
 
     @SerializedName("full_name")
     val fullName: String,

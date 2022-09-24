@@ -15,7 +15,21 @@ import com.squareup.picasso.Picasso
 import com.squareup.picasso.Transformation
 
 
-class JavaRepoViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+class JavaRepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+    init {
+        view.setOnClickListener {
+
+            val context = view.context
+            context.startActivity(
+                PullRequestActivity.startActivity(
+                    context,
+                    javaRepo?.login,
+                    javaRepo?.name
+                )
+            )
+        }
+    }
 
     private val repoName: TextView = view.findViewById(R.id.textViewRepoName)
     private val repoDescription: TextView = view.findViewById(R.id.textViewRepoDescription)
@@ -24,33 +38,25 @@ class JavaRepoViewHolder(private val view: View) : RecyclerView.ViewHolder(view)
     private val userName: TextView = view.findViewById(R.id.textViewUserName)
     private val imageViewUser: ImageView = view.findViewById(R.id.imageViewUser)
 
-    fun bind(itemJava: JavaRepo?) {
-        showItems(itemJava)
+    private var javaRepo: JavaRepo? = null
 
-        view.setOnClickListener {
-            val context = view.context
-            context.startActivity(
-                PullRequestActivity.startActivity(
-                    context,
-                    itemJava?.login,
-                    itemJava?.name
-                )
-            )
-        }
+    fun bind(itemJava: JavaRepo?) {
+        itemJava?.let { showItems(it) }
     }
 
-    private fun showItems(javaRepo: JavaRepo?) {
-        repoName.text = javaRepo?.fullName
+    private fun showItems(javaRepo: JavaRepo) {
+        this.javaRepo = javaRepo
+        repoName.text = javaRepo.fullName
         repoDescription.apply {
-            isVisible = javaRepo?.description != null
-            text = javaRepo?.description
+            isVisible = javaRepo.description != null
+            text = javaRepo.description
         }
-        countStar.text = javaRepo?.startCount
-        countBranch.text = javaRepo?.forksCount
-        userName.text = javaRepo?.name
+        countStar.text = javaRepo.startCount
+        countBranch.text = javaRepo.forksCount
+        userName.text = javaRepo.name
 
         Picasso.get()
-            .load(javaRepo?.avatar)
+            .load(javaRepo.avatar)
             .placeholder(R.drawable.ic_baseline_supervised_user_circle_24)
             .transform(CircleTransform())
             .into(imageViewUser)

@@ -29,7 +29,7 @@ internal class FetchJavaRepoRepository(
 
    private fun List<ItemJavaModel>.toItemJava() = map {
         JavaRepo(
-            name = it.name,
+            name = it.name ?: "",
             description = it.description,
             fullName = it.fullName,
             avatar = it.owner.avatarUrl,

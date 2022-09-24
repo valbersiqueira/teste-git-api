@@ -8,7 +8,7 @@ import retrofit2.HttpException
 import java.io.IOException
 
 class JavaRepoPagingSource(
-    private val fetchRepoOut: FetchRepoIn
+    private val fetchRepoIn: FetchRepoIn
 ) : PagingSource<Int, JavaRepo>() {
 
     companion object {
@@ -27,7 +27,7 @@ class JavaRepoPagingSource(
         val position = params.key ?: STARTING_PAGE
 
         return try {
-            val items = fetchRepoOut.fetchJavaRepo(position, params.loadSize)
+            val items = fetchRepoIn.fetchJavaRepo(position, params.loadSize)
 
             val nextKey = if (items.isEmpty()) {
                 null

@@ -12,7 +12,7 @@ import com.br.valber.testegitapi.databinding.ActivityJavaRepoBinding
 import com.br.valber.testegitapi.di.injectProjectMainModule
 import com.br.valber.testegitapi.presentation.javarepo.adapter.JavaRepoAdapter
 import com.br.valber.testegitapi.presentation.javarepo.adapter.LoadStateAdapter
-import com.br.valber.testegitapi.presentation.javarepo.state.JavaRepoState
+import com.br.valber.testegitapi.presentation.javarepo.state.UIJavaRepoState
 import com.br.valber.testegitapi.presentation.javarepo.viewmodel.JavaRepoViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
@@ -39,7 +39,7 @@ class JavaRepoActivity : AppCompatActivity() {
     }
 
     private fun ActivityJavaRepoBinding.bindState(
-        uiAction: (JavaRepoState) -> Unit
+        uiAction: (UIJavaRepoState) -> Unit
     ) {
         val adapter = JavaRepoAdapter()
         recyclerRepo.adapter = adapter.withLoadStateHeaderAndFooter(
@@ -52,12 +52,12 @@ class JavaRepoActivity : AppCompatActivity() {
 
     private fun ActivityJavaRepoBinding.bindList(
         adapter: JavaRepoAdapter,
-        onScrollChanged: (JavaRepoState.Scroll) -> Unit
+        onScrollChanged: (UIJavaRepoState.Scroll) -> Unit
     ) {
         buttonRetry.setOnClickListener { adapter.retry() }
         recyclerRepo.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (dy != 0) onScrollChanged.invoke(JavaRepoState.Scroll)
+                if (dy != 0) onScrollChanged.invoke(UIJavaRepoState.Scroll)
             }
         })
 

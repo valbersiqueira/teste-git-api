@@ -1,15 +1,15 @@
 package com.br.valber.testegitapi.data.repositories
 
-import com.br.valber.testegitapi.framework.RemoteBuilder
-import com.br.valber.testegitapi.framework.RequestApi
 import com.br.valber.testegitapi.data.model.ItemJavaModel
 import com.br.valber.testegitapi.data.service.JavaRepoService
 import com.br.valber.testegitapi.domain.entity.JavaRepo
 import com.br.valber.testegitapi.domain.input.FetchRepoOut
+import com.br.valber.testegitapi.framework.RemoteBuilder
+import com.br.valber.testegitapi.framework.RequestApi
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
-internal class FetchJavaRepoRepositorie(
+internal class FetchJavaRepoRepository(
     private val remoteBuilder: RemoteBuilder,
     private val requestApi: RequestApi,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
@@ -27,14 +27,15 @@ internal class FetchJavaRepoRepositorie(
         }
     }
 
-    private fun List<ItemJavaModel>.toItemJava() = map {
+   private fun List<ItemJavaModel>.toItemJava() = map {
         JavaRepo(
             name = it.name,
             description = it.description,
             fullName = it.fullName,
             avatar = it.owner.avatarUrl,
             forksCount = it.forks.toString(),
-            startCount = it.stargazersCount.toString()
+            startCount = it.stargazersCount.toString(),
+            pullsUrl = it.pullsUrl ?: ""
         )
     }
 

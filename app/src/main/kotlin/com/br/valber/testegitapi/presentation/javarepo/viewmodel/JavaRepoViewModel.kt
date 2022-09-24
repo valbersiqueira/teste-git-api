@@ -10,7 +10,7 @@ import com.br.valber.testegitapi.domain.entity.JavaRepo
 import com.br.valber.testegitapi.domain.input.FetchRepoIn
 import com.br.valber.testegitapi.presentation.javarepo.paging.JavaRepoPagingSource
 import com.br.valber.testegitapi.presentation.javarepo.paging.JavaRepoPagingSource.Companion.NETWORK_PAGE_SIZE
-import com.br.valber.testegitapi.presentation.javarepo.state.JavaRepoState
+import com.br.valber.testegitapi.presentation.javarepo.state.UIJavaRepoState
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -20,20 +20,20 @@ internal class JavaRepoViewModel(
 ) : ViewModel() {
 
     val pagingDataFlow: Flow<PagingData<JavaRepo>>
-    val accept: (JavaRepoState) -> Unit
+    val accept: (UIJavaRepoState) -> Unit
 
     init {
-        val actionStateFlow = MutableSharedFlow<JavaRepoState>()
+        val actionStateFlow = MutableSharedFlow<UIJavaRepoState>()
 
         val queryScroll = actionStateFlow
-            .filterIsInstance<JavaRepoState.Scroll>()
+            .filterIsInstance<UIJavaRepoState.Scroll>()
             .distinctUntilChanged()
             .shareIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 5000),
                 replay = 1
             )
-            .onStart { emit(JavaRepoState.Scroll) }
+            .onStart { emit(UIJavaRepoState.Scroll) }
 
         @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
         pagingDataFlow = queryScroll

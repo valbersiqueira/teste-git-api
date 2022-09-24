@@ -9,6 +9,18 @@ data class PullRequestModel(
     @SerializedName("state")
     val state: String?,
 
-    @SerializedName("owner")
-    val owner: OwnerModel
+    @SerializedName("body")
+    val body: String?,
+
+    @SerializedName("head")
+    val head: HeadModel
+)
+
+
+data class HeadModel(
+    @SerializedName("user")
+    val user: OwnerModel,
+
+    @SerializedName("repo")
+    val repo: ItemJavaModel
 )

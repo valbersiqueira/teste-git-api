@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Teste git api</string>
+    <string name="app_name">Github Java Repo</string>
 
     <string name="label_retry">Tentar novamente</string>
     <string name="label_no_results">Lista vazia!</string>

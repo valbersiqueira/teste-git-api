@@ -25,6 +25,6 @@ data class ItemJavaModel(
     val forks: Int? = 0,
 
     @SerializedName("owner")
-    val owner: OwnerModel,
+    val owner: OwnerModel
 
 )

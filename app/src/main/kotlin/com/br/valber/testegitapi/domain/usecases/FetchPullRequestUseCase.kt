@@ -12,7 +12,6 @@ internal class FetchPullRequestUseCase(
         itemsPerPage: Int,
         owner: String,
         repo: String
-    ) =
-        fetchPullRequestOut.fetchPulls(page, itemsPerPage, owner, repo)
+    ) =  fetchPullRequestOut.fetchPulls(page, itemsPerPage, owner, repo)
 
 }

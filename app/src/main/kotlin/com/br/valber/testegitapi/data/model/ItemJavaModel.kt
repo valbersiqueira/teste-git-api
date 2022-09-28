@@ -2,7 +2,7 @@ package com.br.valber.testegitapi.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ItemJavaModel(
+internal data class ItemJavaModel(
     @SerializedName("id")
     val id: Long,
 

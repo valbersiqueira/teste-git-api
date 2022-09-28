@@ -35,6 +35,7 @@ class JavaRepoActivity : AppCompatActivity() {
         setContentView(binding.root)
         val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         binding.recyclerRepo.addItemDecoration(decoration)
+
         binding.bindState(viewModel.accept)
     }
 

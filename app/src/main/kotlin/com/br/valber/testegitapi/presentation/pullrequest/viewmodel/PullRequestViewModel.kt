@@ -13,8 +13,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-@ExperimentalCoroutinesApi
-internal class PullRequestViewModel(
+@Suppress("EXPERIMENTAL_IS_NOT_ENABLED")
+internal class PullRequestViewModel (
     private val owner: String?,
     private val nameRepo: String?,
     private val fetchPullRequestIn: FetchPullRequestIn
@@ -36,6 +36,7 @@ internal class PullRequestViewModel(
             )
             .onStart { emit(UIPullRequestState.Scroll) }
 
+        @OptIn(ExperimentalCoroutinesApi::class)
         pagingDataFlow = queryScroll.flatMapLatest {
             Pager(
                 config = PagingConfig(pageSize = CustomPagingSource.NETWORK_PAGE_SIZE),
@@ -53,4 +54,9 @@ internal class PullRequestViewModel(
             }
         }
     }
+
+    fun isScrollChanged(dy: Int) {
+        if (dy != 0) accept.invoke(UIPullRequestState.Scroll)
+    }
+
 }

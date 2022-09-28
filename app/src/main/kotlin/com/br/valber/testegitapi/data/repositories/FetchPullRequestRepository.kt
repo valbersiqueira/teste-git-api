@@ -9,7 +9,7 @@ import com.br.valber.testegitapi.framework.RequestApi
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
-class FetchPullRequestRepository(
+internal class FetchPullRequestRepository(
     private val remoteBuilder: RemoteBuilder,
     private val requestApi: RequestApi,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO

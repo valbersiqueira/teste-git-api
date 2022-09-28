@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.br.valber.testegitapi.R
 import com.br.valber.testegitapi.domain.entity.PullRequest
 import com.br.valber.testegitapi.presentation.javarepo.adapter.viewholder.JavaRepoViewHolder
+import com.br.valber.testegitapi.presentation.view.CircleTransform
 import com.squareup.picasso.Picasso
 
 internal class PullRequestViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -33,7 +34,7 @@ internal class PullRequestViewHolder(view: View) : RecyclerView.ViewHolder(view)
         Picasso.get()
             .load(pullRequest?.avatar)
             .placeholder(R.drawable.ic_baseline_supervised_user_circle_24)
-            .transform(JavaRepoViewHolder.CircleTransform())
+            .transform(CircleTransform())
             .into(imageViewUser)
     }
 

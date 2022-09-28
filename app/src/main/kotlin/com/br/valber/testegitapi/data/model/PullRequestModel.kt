@@ -2,7 +2,7 @@ package com.br.valber.testegitapi.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class PullRequestModel(
+internal data class PullRequestModel(
     @SerializedName("title")
     val title: String?,
 
@@ -14,13 +14,4 @@ data class PullRequestModel(
 
     @SerializedName("head")
     val head: HeadModel
-)
-
-
-data class HeadModel(
-    @SerializedName("user")
-    val user: OwnerModel,
-
-    @SerializedName("repo")
-    val repo: ItemJavaModel?
 )

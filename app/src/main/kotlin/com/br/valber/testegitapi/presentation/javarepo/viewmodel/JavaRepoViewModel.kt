@@ -9,7 +9,7 @@ import androidx.paging.cachedIn
 import com.br.valber.testegitapi.domain.entity.JavaRepo
 import com.br.valber.testegitapi.domain.input.FetchRepoIn
 import com.br.valber.testegitapi.framework.CustomPagingSource
-import com.br.valber.testegitapi.presentation.javarepo.paging.JavaRepoPagingSource.Companion.NETWORK_PAGE_SIZE
+import com.br.valber.testegitapi.framework.CustomPagingSource.Companion.NETWORK_PAGE_SIZE
 import com.br.valber.testegitapi.presentation.javarepo.state.UIJavaRepoState
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch

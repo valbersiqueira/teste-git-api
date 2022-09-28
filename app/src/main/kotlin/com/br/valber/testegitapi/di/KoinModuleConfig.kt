@@ -15,12 +15,13 @@ import com.br.valber.testegitapi.framework.RetrofitBuilderImpl
 import com.br.valber.testegitapi.presentation.javarepo.viewmodel.JavaRepoViewModel
 import com.br.valber.testegitapi.presentation.pullrequest.viewmodel.PullRequestViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
-private val projectJavaRepoModule = module {
+private val javaRepoModule = module {
     factory<RequestApi> { RequestApiImpl() }
     factory<RemoteBuilder> { RetrofitBuilderImpl() }
     factory<FetchRepoOut> { FetchJavaRepoRepository(get(), get(), Dispatchers.IO) }
@@ -30,7 +31,7 @@ private val projectJavaRepoModule = module {
 }
 
 
-private val projectPullsModule = module {
+private val pullsModule = module {
     factory<RequestApi> { RequestApiImpl() }
     factory<RemoteBuilder> { RetrofitBuilderImpl() }
     factory<FetchPullRequestOut> { FetchPullRequestRepository(get(), get(), Dispatchers.IO) }
@@ -40,10 +41,10 @@ private val projectPullsModule = module {
 }
 
 
-private val loadingProjectMainModule by lazy {
+private val loadingJavaRepoModule by lazy {
     startKoin {
-        loadKoinModules(arrayListOf(projectJavaRepoModule, projectPullsModule))
+        loadKoinModules(arrayListOf(javaRepoModule, pullsModule))
     }
 }
 
-internal fun injectProjectMainModule() = loadingProjectMainModule
+internal fun injectProjectMainModule() = loadingJavaRepoModule

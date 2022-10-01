@@ -2,6 +2,7 @@ package com.br.valber.testegitapi.di
 
 import com.br.valber.testegitapi.data.repositories.FetchJavaRepoRepository
 import com.br.valber.testegitapi.data.repositories.FetchPullRequestRepository
+import com.br.valber.testegitapi.data.service.JavaRepoService
 import com.br.valber.testegitapi.domain.input.FetchPullRequestIn
 import com.br.valber.testegitapi.domain.input.FetchPullRequestOut
 import com.br.valber.testegitapi.domain.input.FetchRepoIn

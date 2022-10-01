@@ -13,5 +13,5 @@ internal data class PullRequestModel(
     val body: String?,
 
     @SerializedName("head")
-    val head: HeadModel
+    val head: HeadModel?
 )

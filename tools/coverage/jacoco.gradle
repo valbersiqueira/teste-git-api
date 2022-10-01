@@ -7,11 +7,11 @@ jacoco {
 }
 
 
-task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest',
-                                                      'createDebugCoverageReport']) {
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
 
     reports {
         xml.required = false
+        html.outputLocation = layout.buildDirectory.dir("jacocoHtml")
     }
 
 
@@ -26,4 +26,8 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest',
             "outputs/code-coverage/connected/*coverage.ec"
     ]))
 
+
+    doLast {
+        println "Coverage report path -> file://${reports.html.destination}\\index.html\n"
+    }
 }

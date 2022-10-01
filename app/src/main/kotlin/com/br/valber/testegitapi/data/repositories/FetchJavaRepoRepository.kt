@@ -4,26 +4,26 @@ import com.br.valber.testegitapi.data.model.ItemJavaModel
 import com.br.valber.testegitapi.data.service.JavaRepoService
 import com.br.valber.testegitapi.domain.entity.JavaRepo
 import com.br.valber.testegitapi.domain.input.FetchRepoOut
-import com.br.valber.testegitapi.framework.RemoteBuilder
-import com.br.valber.testegitapi.framework.RequestApi
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 internal class FetchJavaRepoRepository(
-    private val remoteBuilder: RemoteBuilder,
-    private val requestApi: RequestApi,
+    private val service: JavaRepoService,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : FetchRepoOut {
-
-    private val service by lazy { remoteBuilder.build().create(JavaRepoService::class.java) }
 
     override suspend fun fetchJavaRepo(
         page: Int,
         itemsPerPage: Int
     ): List<JavaRepo> {
-        return requestApi.safeRequestApi(dispatcher) {
-            val response = service.fetchJavaRepo(page, itemsPerPage)
-            response.items.toItemJava()
+        return withContext(dispatcher) {
+            try {
+                val response = service.fetchJavaRepo(page, itemsPerPage)
+                response.items.toItemJava()
+            } catch (ex: Exception) {
+                throw Exception(ex)
+            }
         }
     }
 
@@ -31,12 +31,12 @@ internal class FetchJavaRepoRepository(
         JavaRepo(
             name = it.name ?: "",
             description = it.description,
-            fullName = it.fullName,
-            avatar = it.owner.avatarUrl,
+            fullName = it.fullName ?: "",
+            avatar = it.owner?.avatarUrl ?: "",
             forksCount = it.forks.toString(),
             startCount = it.stargazersCount.toString(),
             pullsUrl = it.pullsUrl ?: "",
-            login = it.owner.login
+            login = it.owner?.login ?: ""
         )
     }
 

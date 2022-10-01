@@ -1,23 +1,28 @@
 package com.br.valber.testegitapi.data.repositories
 
 import com.br.valber.testegitapi.MainDispatcherRule
-import com.br.valber.testegitapi.argumentCaptor
+import com.br.valber.testegitapi.data.model.ItemJavaModel
 import com.br.valber.testegitapi.data.model.JavaRepoModel
+import com.br.valber.testegitapi.data.model.OwnerModel
 import com.br.valber.testegitapi.data.service.JavaRepoService
 import com.br.valber.testegitapi.domain.entity.JavaRepo
-import com.br.valber.testegitapi.framework.RemoteBuilder
-import com.br.valber.testegitapi.framework.RequestApi
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.TestDispatcher
+import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito.doAnswer
+import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
+import retrofit2.HttpException
+import java.lang.RuntimeException
+import java.lang.reflect.Type
 
 
 @ExperimentalCoroutinesApi
@@ -26,47 +31,57 @@ internal class FetchJavaRepoRepositoryTest {
     @get:Rule
     val rule = MainDispatcherRule()
 
-    private val requestApi = mock(RequestApi::class.java)
-    private val remoteBuilder = mock(RemoteBuilder::class.java)
+    private val service = mock(JavaRepoService::class.java)
     private lateinit var fetchJavaRepoRepository: FetchJavaRepoRepository
 
     @Before
     fun setUp() {
         fetchJavaRepoRepository =
-            FetchJavaRepoRepository(remoteBuilder , requestApi, rule.testDispatcher)
+            FetchJavaRepoRepository(service, rule.testDispatcher)
     }
 
     @Test
-    fun `should javaRepo with size 1 when action fetch request`() = runTest(rule.testDispatcher) {
-        val argumentCaptorTestDispatcher = argumentCaptor<TestDispatcher>()
-        val argumentCaptorResult = argumentCaptor<suspend () -> Any>()
+    fun `should return javaRepo with size 1 when action fetch request`() =
+        runTest(rule.testDispatcher) {
 
-        doAnswer {
-            @Suppress("UNCHECKED_CAST")
-            (it.arguments[1] as suspend () -> JavaRepoModel)
-            arrayListOf(
-                JavaRepo(
-                    name = "",
-                    description = "",
-                    forksCount = "",
-                    fullName = "",
-                    startCount = "",
-                    pullsUrl = "",
-                    login = "",
-                    avatar = ""
+            `when`(service.fetchJavaRepo(0, 1)).thenReturn(
+                JavaRepoModel(
+                    totalCount = 0, items = arrayListOf(
+                        ItemJavaModel(
+                            name = "",
+                            description = "",
+                            forks = 0,
+                            fullName = "",
+                            pullsUrl = "",
+                            owner = OwnerModel(login = "", avatarUrl = ""),
+                            id = 0,
+                            stargazersCount = 0
+                        )
+                    )
                 )
             )
-        }.`when`(requestApi).safeRequestApi(
-            argumentCaptorTestDispatcher.capture(),
-            argumentCaptorResult.captureLambda()
-        )
 
-        var response: List<JavaRepo>? = null
-        launch {
-            response = fetchJavaRepoRepository.fetchJavaRepo(0, 1)
+            var response: List<JavaRepo>? = null
+            launch {
+                response = fetchJavaRepoRepository.fetchJavaRepo(0, 1)
+            }
+
+            assertThat(response?.size, `is`(1))
+
         }
-        assertThat(response?.size, `is`(1))
 
+    @Test(expected = HttpException::class)
+    fun `should throw exception when converter mapper fails`() = runTest(rule.testDispatcher) {
+        val service = FakeServiceImpl()
+        val response = mock(JavaRepoModel::class.java)
+        `when`(service.fetchJavaRepo(0, 1))
+            .thenReturn(
+                response
+            )
+
+        launch {
+            fetchJavaRepoRepository.fetchJavaRepo(0, 1)
+        }
     }
 
 }

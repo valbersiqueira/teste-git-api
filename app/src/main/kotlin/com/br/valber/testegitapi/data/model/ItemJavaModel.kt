@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName
 
 internal data class ItemJavaModel(
     @SerializedName("id")
-    val id: Long,
+    val id: Long?,
 
     @SerializedName("name")
     val name: String?,
 
     @SerializedName("full_name")
-    val fullName: String,
+    val fullName: String?,
 
     @SerializedName("description")
     val description: String?,
@@ -25,6 +25,6 @@ internal data class ItemJavaModel(
     val forks: Int? = 0,
 
     @SerializedName("owner")
-    val owner: OwnerModel
+    val owner: OwnerModel?
 
 )

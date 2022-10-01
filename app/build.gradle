@@ -4,6 +4,7 @@ plugins {
 }
 
 apply from: "$rootDir/tools/versions.gradle"
+apply from: "$rootDir/tools/coverage/jacoco.gradle"
 
 android {
     def versions = rootProject.ext.versionsProject
@@ -27,6 +28,7 @@ android {
         def base_url = "\"https://api.github.com/\""
 
         debug {
+            testCoverageEnabled true
             buildConfigField "String", "enviroment", base_url
         }
 
@@ -43,6 +45,19 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    testOptions {
+        animationsDisabled true
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
+                excludes = ['jdk.internal.*']
+            }
+
+            unitTests.returnDefaultValues = true
+        }
+    }
+
 }
 
 dependencies {

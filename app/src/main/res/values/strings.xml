@@ -3,4 +3,8 @@
 
     <string name="label_retry">Tentar novamente</string>
     <string name="label_no_results">Lista vazia!</string>
+
+    <string name="description_accessibility_profile_photo">Foto do usuario</string>
+    <string name="description_accessibility_counter_fork">Quantidade de forks</string>
+    <string name="description_accessibility_counter_stars">Quantidade de starts</string>
 </resources>

@@ -2,7 +2,6 @@
 
 package com.br.valber.testegitapi.presentation.javarepo.adapter.viewholder
 
-import android.graphics.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,6 @@ import com.br.valber.testegitapi.domain.entity.JavaRepo
 import com.br.valber.testegitapi.presentation.pullrequest.view.PullRequestActivity
 import com.br.valber.testegitapi.presentation.view.CircleTransform
 import com.squareup.picasso.Picasso
-import com.squareup.picasso.Transformation
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 

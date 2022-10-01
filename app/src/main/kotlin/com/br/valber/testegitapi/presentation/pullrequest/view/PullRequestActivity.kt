@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.br.valber.testegitapi.databinding.ActivityPullsRequestBinding
 import com.br.valber.testegitapi.framework.extensions.viewBinding
 import com.br.valber.testegitapi.presentation.pullrequest.adapter.PullRequestAdapter
-import com.br.valber.testegitapi.presentation.pullrequest.state.UIPullRequestState
 import com.br.valber.testegitapi.presentation.pullrequest.viewmodel.PullRequestViewModel
 import com.br.valber.testegitapi.presentation.view.apdater.LoadStateAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -28,6 +27,7 @@ import org.koin.core.parameter.parametersOf
 internal class PullRequestActivity : AppCompatActivity() {
 
     private val binding: ActivityPullsRequestBinding by viewBinding(ActivityPullsRequestBinding::inflate)
+
     private val viewModel: PullRequestViewModel by viewModel(
         parameters = {
             parametersOf(getOwner(intent), getNameRepo(intent))

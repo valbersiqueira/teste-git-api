@@ -3,7 +3,7 @@ package com.br.valber.testegitapi.data.repositories
 import com.br.valber.testegitapi.data.model.ItemJavaModel
 import com.br.valber.testegitapi.data.service.JavaRepoService
 import com.br.valber.testegitapi.domain.entity.JavaRepo
-import com.br.valber.testegitapi.domain.input.FetchRepoOut
+import com.br.valber.testegitapi.domain.output.FetchRepoOutput
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -11,7 +11,7 @@ import kotlinx.coroutines.withContext
 internal class FetchJavaRepoRepository(
     private val service: JavaRepoService,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
-) : FetchRepoOut {
+) : FetchRepoOutput {
 
     override suspend fun fetchJavaRepo(
         page: Int,

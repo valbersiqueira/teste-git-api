@@ -7,7 +7,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.br.valber.testegitapi.domain.entity.JavaRepo
-import com.br.valber.testegitapi.domain.input.FetchRepoIn
+import com.br.valber.testegitapi.domain.input.FetchRepoInput
 import com.br.valber.testegitapi.framework.CustomPagingSource
 import com.br.valber.testegitapi.framework.CustomPagingSource.Companion.NETWORK_PAGE_SIZE
 import com.br.valber.testegitapi.presentation.javarepo.state.UIJavaRepoState
@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 @Suppress("EXPERIMENTAL_IS_NOT_ENABLED")
 internal class JavaRepoViewModel(
-    private val fetchRepoIn: FetchRepoIn
+    private val fetchRepoInput: FetchRepoInput
 ) : ViewModel() {
 
     val pagingDataFlow: Flow<PagingData<JavaRepo>>
@@ -42,7 +42,7 @@ internal class JavaRepoViewModel(
                     config = PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false),
                     pagingSourceFactory = {
                         CustomPagingSource { position, perPage ->
-                            fetchRepoIn.fetchJavaRepo(position, perPage)
+                            fetchRepoInput.fetchJavaRepo(position, perPage)
                         }
                     }
                 ).flow

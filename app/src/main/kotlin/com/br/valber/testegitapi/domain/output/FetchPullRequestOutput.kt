@@ -1,8 +1,8 @@
-package com.br.valber.testegitapi.domain.input
+package com.br.valber.testegitapi.domain.output
 
 import com.br.valber.testegitapi.domain.entity.PullRequest
 
-interface FetchPullRequestIn {
+interface FetchPullRequestOutput {
 
     suspend fun fetchPulls(
         page: Int,

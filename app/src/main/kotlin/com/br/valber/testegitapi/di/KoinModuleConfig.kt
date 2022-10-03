@@ -3,10 +3,10 @@ package com.br.valber.testegitapi.di
 import com.br.valber.testegitapi.data.repositories.FetchJavaRepoRepository
 import com.br.valber.testegitapi.data.repositories.FetchPullRequestRepository
 import com.br.valber.testegitapi.data.service.JavaRepoService
-import com.br.valber.testegitapi.domain.input.FetchPullRequestIn
-import com.br.valber.testegitapi.domain.input.FetchPullRequestOut
-import com.br.valber.testegitapi.domain.input.FetchRepoIn
-import com.br.valber.testegitapi.domain.input.FetchRepoOut
+import com.br.valber.testegitapi.domain.input.FetchPullRequestInput
+import com.br.valber.testegitapi.domain.output.FetchPullRequestOutput
+import com.br.valber.testegitapi.domain.input.FetchRepoInput
+import com.br.valber.testegitapi.domain.output.FetchRepoOutput
 import com.br.valber.testegitapi.domain.usecases.FetchPullRequestUseCase
 import com.br.valber.testegitapi.domain.usecases.FetchRepoUseCase
 import com.br.valber.testegitapi.framework.RemoteBuilder
@@ -19,14 +19,14 @@ import org.koin.core.context.loadKoinModules
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
-private val javaRepoModule = module {
+internal val javaRepoModule = module {
     factory<RemoteBuilder> { RetrofitBuilderImpl() }
-    factory<FetchRepoOut> { FetchJavaRepoRepository(get(), Dispatchers.IO) }
+    factory<FetchRepoOutput> { FetchJavaRepoRepository(get(), Dispatchers.IO) }
     factory<JavaRepoService> { get<RemoteBuilder>().build().create(JavaRepoService::class.java) }
-    factory<FetchRepoIn> { FetchRepoUseCase(get()) }
+    factory<FetchRepoInput> { FetchRepoUseCase(get()) }
 
-    factory<FetchPullRequestOut> { FetchPullRequestRepository(get(), Dispatchers.IO) }
-    factory<FetchPullRequestIn> { FetchPullRequestUseCase(get()) }
+    factory<FetchPullRequestOutput> { FetchPullRequestRepository(get(), Dispatchers.IO) }
+    factory<FetchPullRequestInput> { FetchPullRequestUseCase(get()) }
 
     viewModel { (owner: String?, nameRepo: String) -> PullRequestViewModel(owner, nameRepo, get()) }
     viewModel { JavaRepoViewModel(get()) }

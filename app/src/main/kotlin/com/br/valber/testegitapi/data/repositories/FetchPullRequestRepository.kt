@@ -3,7 +3,7 @@ package com.br.valber.testegitapi.data.repositories
 import com.br.valber.testegitapi.data.model.PullRequestModel
 import com.br.valber.testegitapi.data.service.JavaRepoService
 import com.br.valber.testegitapi.domain.entity.PullRequest
-import com.br.valber.testegitapi.domain.input.FetchPullRequestOut
+import com.br.valber.testegitapi.domain.output.FetchPullRequestOutput
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -11,7 +11,7 @@ import kotlinx.coroutines.withContext
 internal class FetchPullRequestRepository(
     private val service: JavaRepoService,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
-) : FetchPullRequestOut {
+) : FetchPullRequestOutput {
 
     override suspend fun fetchPulls(
         page: Int,

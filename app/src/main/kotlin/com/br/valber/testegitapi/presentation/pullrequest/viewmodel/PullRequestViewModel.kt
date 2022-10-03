@@ -6,7 +6,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.br.valber.testegitapi.domain.entity.PullRequest
-import com.br.valber.testegitapi.domain.input.FetchPullRequestIn
+import com.br.valber.testegitapi.domain.input.FetchPullRequestInput
 import com.br.valber.testegitapi.framework.CustomPagingSource
 import com.br.valber.testegitapi.presentation.pullrequest.state.UIPullRequestState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 internal class PullRequestViewModel (
     private val owner: String?,
     private val nameRepo: String?,
-    private val fetchPullRequestIn: FetchPullRequestIn
+    private val fetchPullRequestInput: FetchPullRequestInput
 ) : ViewModel() {
 
     val pagingDataFlow: Flow<PagingData<PullRequest>>
@@ -42,7 +42,7 @@ internal class PullRequestViewModel (
                 config = PagingConfig(pageSize = CustomPagingSource.NETWORK_PAGE_SIZE),
                 pagingSourceFactory = {
                     CustomPagingSource { page, perPage ->
-                        fetchPullRequestIn.fetchPulls(page, perPage, owner ?: "", nameRepo ?: "")
+                        fetchPullRequestInput.fetchPulls(page, perPage, owner ?: "", nameRepo ?: "")
                     }
                 }
             ).flow
